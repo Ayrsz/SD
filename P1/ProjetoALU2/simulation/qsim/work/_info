@@ -1,0 +1,58 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Users/vsmn/Documents/ProjetoALU2/simulation/qsim
+v\Adder-Subtractor 
+Z1 !s110 1690994540
+!i10b 1
+!s100 FQX1XV1nAHG9]<=_kDbQL1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+If=lDz1?Wg>K^5OZ[`C7z22
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1690994539
+Z5 8ProjetoALU.vo
+Z6 FProjetoALU.vo
+!i122 3
+L0 31 608
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1690994540.000000
+!s107 ProjetoALU.vo|
+Z9 !s90 -work|work|ProjetoALU.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@134@adder-@subtractor@040
+vhard_block
+R1
+!i10b 1
+!s100 Oiaac50GQR1M<EhY?aD>b0
+R2
+IInn<J5GFL_EmfAL^d;_:;2
+R3
+R0
+R4
+R5
+R6
+!i122 3
+L0 640 34
+R7
+r1
+!s85 0
+31
+R8
+Z12 !s107 ProjetoALU.vo|
+R9
+!i113 1
+R10
+R11

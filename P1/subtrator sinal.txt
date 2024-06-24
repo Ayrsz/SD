@@ -1,0 +1,3 @@
+( a AND ( a XOR b ) ) OR ( a AND ( a XOR b ) AND l ) OR ( a AND ( NOT ( a XOR b ) AND g ) )
+⇓
+(a AND NOT b) OR (a AND g)

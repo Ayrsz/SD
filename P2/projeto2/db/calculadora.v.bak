@@ -1,0 +1,107 @@
+module calculadora(
+	input clock, button_multiplicao, button_soma, button_subtracao, button_enable,
+	inout sinalA, sinalB,
+	inout [7:0] A, B,
+	output reg sinalS,
+	output reg [14:0] S,
+	output reg [2:0] state
+	
+);
+
+parameter  DESLIGADO = 0, ESPERANDO = 1, SOMA = 2, SUBTRACAO = 3, MULTIPLICACAO = 4;
+
+reg [3:0] estado_anterior;
+
+
+initial begin
+	state = DESLIGADO;
+	estado_anterior = 4'b0000;
+end
+
+
+
+
+
+always @(posedge clock)
+begin
+
+	case(state)
+		DESLIGADO: begin
+			S = 0;
+		end
+		
+		ESPERANDO: begin	
+			S = 0;
+		end
+		
+		
+		SOMA:begin
+		
+		if(A>B)begin
+			sinalS = sinalA;
+			if(sinalA != sinalB) S = A - B;
+			else S = A + B;
+		end
+		else if(B >= A) begin
+			sinalS = sinalB;
+			if(sinalA != sinalB) S = B - A;
+			else S = A + B;
+			
+			end		
+		end
+
+		SUBTRACAO:begin
+			
+		if(sinalA != sinalB)begin
+			sinalS = sinalA;
+			S = A + B;
+			end
+			else if(A>=B) begin
+				sinalS = sinalA;
+				S = A - B;
+				end 
+				else begin
+					if(sinalB == 1) sinalS = 0;
+					else sinalS = 1;
+				S = B - A;
+				end
+			
+		
+		end
+		
+		
+		MULTIPLICACAO:begin
+		
+			if(sinalB == sinalA) sinalS = 0;
+			else sinalS = 1;
+			
+			S = A * B;
+		
+		end
+		
+		
+		endcase
+end		
+		
+
+
+
+always @(posedge clock)begin
+	
+	estado_anterior <= {button_soma, button_subtracao, button_multiplicao, button_enable};
+		
+	if(estado_anterior[0] && !button_enable)begin
+			if(state == DESLIGADO) state = ESPERANDO;
+			else state = DESLIGADO;
+		end
+	else if(estado_anterior[1] && !button_multiplicao && state != DESLIGADO) state = MULTIPLICACAO;
+	else if(estado_anterior[2] && !button_subtracao && state != DESLIGADO) state = SUBTRACAO;
+	else if(estado_anterior[3] && !button_soma && state != DESLIGADO) state = SOMA;
+		
+	end
+
+
+
+
+
+endmodule
